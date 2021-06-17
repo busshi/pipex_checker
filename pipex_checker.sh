@@ -28,7 +28,7 @@ echo -e "_______________________________________________________________________
 ### COMPILATION
 echo -e "[....] Compiling pipex project...\c"
 compil=$( make -C ${PIPEX_DIR} )
-[ $? -eq 0 ] && echo -e "\r${OK}\n\n" || { echo -e "\r${KO}\n\n"; echo ${compil}; exit 1; }
+[ $? -eq 0 ] && { echo -e "\r${OK}\n\n"; sleep 1; } || { echo -e "\r${KO}\n\n"; echo ${compil}; exit 1; }
 
 
 ### RUN TESTS
