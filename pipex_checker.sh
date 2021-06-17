@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-PROJECT_DIR=../			# CHANGE THIS IF YOU WANT...
+PIPEX_DIR=../			# CHANGE THIS IF YOU WANT...
 
 
 ### COLORS
@@ -26,9 +26,9 @@ echo -e "_______________________________________________________________________
 
 
 ### COMPILATION
-
-compil=$( make -C ${PROJECT_DIR})
-[ $? -eq 0 ] && echo -e "${purple}Compilation${clear}\t${OK}\n\n" || { echo -e "${purple}Compilation${clear}\t${KO}\n\n"; echo ${compil}; exit 1; }
+echo -e "[....] Compiling pipex project...\c"
+compil=$( make -C ${PIPEX_DIR} )
+[ $? -eq 0 ] && echo -e "\r${OK}\n\n" || { echo -e "\r${KO}\n\n"; echo ${compil}; exit 1; }
 
 
 ### RUN TESTS
@@ -61,7 +61,7 @@ rand=${liste[$random]}
 
 random_cmd()
 {
-randomize wc cat whoami "wc -l" "ls -al" "ls -l" echo "echo -n" "wc -w" id
+randomize wc cat whoami "wc -l" "ls -al" "ls -l" echo "echo -n" "wc -w" id ifconfig
 }
 
 
