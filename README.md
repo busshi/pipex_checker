@@ -1,6 +1,6 @@
 PIPEX CHECKER
 
-Test your own pipex programm....
+Test your own pipex programm.... Run random commands to check with the original output. Mandatory part only!
 
 Clone this repository in the root path of your pipex project :
 
