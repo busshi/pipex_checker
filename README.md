@@ -12,3 +12,6 @@ Usage : bash pipex_checker.sh
 
 
 Note : you can edit the PIPEX_DIR variable in the script in you want to clone it elsewhere...
+
+
+NOTE : This is not my best checker... It only check random commands... I advice you to find another checker for this project ;)
