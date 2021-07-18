@@ -30,19 +30,20 @@ echo -e "[....] Compiling pipex project...\c"
 compil=$( make -C ${PIPEX_DIR} )
 [ $? -eq 0 ] && { echo -e "\r${OK}\n\n"; sleep 1; } || { echo -e "\r${KO}\n\n"; echo ${compil}; exit 1; }
 
+cat /dev/random | head -20 > in
 
 ### RUN TESTS
 run_test()
 {
 cd mine
-../../pipex in "$cmd1" "$cmd2" out
+../../pipex ../in "$cmd1" "$cmd2" out
 cd ..
 }
 
 compare_test()
 {
 cd true
-< in $cmd1 | $cmd2 > out
+< ../in $cmd1 | $cmd2 > out
 dif=$( diff ../mine/out out | wc -l )
 [[ $dif -eq 0 ]] && res=${OK} || { res=${KO}; err=$(( $err + 1 )); }
 echo -e "${res}\n\n"
@@ -80,10 +81,8 @@ while [ $i -lt 100 ] ; do
 	i=$(( $i + 1 ))
 done
 
-[[ $err -eq 0 ]] && echo -e "${OK} Congrats!!! All tests passed." || echo -e "${KO} ${red}${err}${clear} error(s) / ${i} tests..."
+rm -rf in mine true
 
+[[ $err -eq 0 ]] && { echo -e "${OK} Congrats!!! All tests passed."; exit 0; } || { echo -e "${KO} ${red}${err}${clear} error(s) / ${i} tests..."; exit 1; }
 
-
-
-exit 0
 
